@@ -16,6 +16,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: touch
+        run: touch test
+      - name: apt
+        run: apt-get update     
       - name: list files 
         run: ls -lsa 
-        
+     
