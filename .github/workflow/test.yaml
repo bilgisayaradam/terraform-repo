@@ -9,7 +9,7 @@ on:
     types: [labeled]
 jobs:
   add-deployment:
-    name: Create PR to create use case from issue
+    name: run commands
     runs-on: ubuntu-latest
     env:
       TEST: hello
