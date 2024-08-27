@@ -19,7 +19,7 @@ jobs:
       - name: touch
         run: touch test
       - name: apt
-        run: apt-get update     
+        run: ls -lsa /  
       - name: list files 
         run: ls -lsa 
      
