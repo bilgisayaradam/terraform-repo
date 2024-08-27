@@ -1,5 +1,4 @@
-name: Create new PR
-
+name: list
 on:
   workflow_dispatch:
     inputs:
@@ -8,31 +7,15 @@ on:
         required: true
   issues:
     types: [labeled]
-
 jobs:
   add-deployment:
     name: Create PR to create use case from issue
     runs-on: ubuntu-latest
     env:
       TEST: hello
-
     steps:
-  
-
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Create PR
-        uses: peter-evans/create-pull-request@v3
-        with:
-          commit-message: "service: Create branch for Usecase"
-          title: "${{env.ISSUE_TITLE}} ${{env.USE_CASE_NAME}}"
-          body: ${{ steps.pr-body.outputs.pr_body }}
-          branch: "usecase/${{env.USE_CASE_NAME}}"
-          base: "main"
-          delete-branch: true
-          reviewers: "${{ env.REVIEWERS }}"
-          # team-reviewers: "${{ env.REVIEWERS }}"  # Set, when team is added as reviewer
-          token: ${{ steps.app-token.outputs.token }}
-        env:
-          USE_CASE_NAME: ${{ steps.parsed-issue-body.outputs.use_case_name }}
+      - name: list files 
+        run: ls -lsa 
+        
