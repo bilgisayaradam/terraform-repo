@@ -11,7 +11,7 @@ jobs:
       - name: Check out Code
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.test }}
+          token: ${{ secrets.token }}
 
 
       - name: Run Populator
