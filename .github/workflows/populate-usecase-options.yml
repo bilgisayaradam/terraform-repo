@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Check out Code
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.test }}
 
       - name: Run Populator
         run: ./scripts/populate-option-value.sh
