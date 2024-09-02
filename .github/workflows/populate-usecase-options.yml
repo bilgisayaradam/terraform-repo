@@ -1,0 +1,30 @@
+name: 'Populate option values'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  eslint:
+    name: Populate Option Values
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Run Populator
+        run: ./scripts/populate-option-value.sh
+
+      - name: Commit Changes
+        run: |
+          if git diff --quiet; then
+            echo "ℹ️ No new Component names to update"
+          else
+            git config --global user.email "${{ github.actor }}@email.com }}"
+            git config --global user.name "${{ github.actor }}"
+            git status
+            #git add .github/workflows/release-it.yml
+            git commit -m "✅ Populated option values"
+            git push
+          fi
