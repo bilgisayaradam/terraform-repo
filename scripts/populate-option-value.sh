@@ -28,8 +28,8 @@ done
 
 
 # Check if the values in the arrays are equal
-echo ${current_options_array[*]} one
-echo ${tmp_output_array[*]} two
+echo ${current_options_array[*]} current values
+echo ${tmp_output_array[*]} new values
 if [[ "${current_options_array[*]}" == "${tmp_output_array[*]}" ]]; then
     echo "Values in YAML file are equal to values in array. No update needed."
 else
