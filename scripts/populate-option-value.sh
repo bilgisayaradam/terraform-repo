@@ -13,30 +13,26 @@ OPTIONS=`ls $USECASE_DIRECTORY`
  
 
 current_options=$(yq eval '.on.workflow_dispatch.inputs.use_case.options' $SOURCE_YAML_FILE )
- echo $current_options here
+  
 current_options_array=()
 while read -r word; do
     current_options_array+=("$word")
 done <<< "$current_options"
-
-echo $current_options_array huhu
  
 declare -a output_array=()
 declare -a output_array1=()
 
 for i in $OPTIONS; do
-    echo $i haha
+ 
     output_array+=("- '$i'")
     output_array1+=("$i")
 done
-echo $output_array heere
-echo $output_array1 sdf
 
 
 # Check if the values in the arrays are equal
 echo ${current_options_array[*]} one
-echo ${output_array1[*]} two
-if [[ "${current_options_array[*]}" == "${output_array1[*]}" ]]; then
+echo ${output_array[*]} two
+if [[ "${current_options_array[*]}" == "${output_array[*]}" ]]; then
     echo "Values in YAML file are equal to values in array. No update needed."
 else
     echo "Values in YAML file are not equal to values in array. Updating YAML file."
