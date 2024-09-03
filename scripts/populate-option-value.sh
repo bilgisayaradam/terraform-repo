@@ -42,7 +42,6 @@ else
     for option in "${output_array1[@]}"; do
     echo $option
         options_string+="\"$option\", "
-       
     done
 
     options_string="${options_string%, }]"
