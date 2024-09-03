@@ -16,6 +16,7 @@ on:
           - foo
           - haus
           - hello
+          - testit
           - x
       environment:
         description: "Name of the environment"
