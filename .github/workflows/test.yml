@@ -1,0 +1,21 @@
+name: 'Release'
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: choice
+        options:
+          - 'major'
+          - 'minor'
+        required: true
+        default: 'patch'
+jobs:
+  release:
+    runs-on: [ubuntu-latest]
+    name: Release it
+    environment: NPM_Feed
+    steps:
+      - name: Check out Code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0

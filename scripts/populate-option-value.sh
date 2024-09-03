@@ -1,15 +1,15 @@
 
+
 #!/bin/bash
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-echo "test"
-echo $SCRIPT_DIR
-SOURCE_YAML_FILE="$SCRIPT_DIR/../.github/workflows/manual_terraform.yml"
-echo $SOURCE_YAML_FILE
+SOURCE_YAML_FILE="$SCRIPT_DIR/../.github/workflows/test.yml"
+
 # dynamically generate values.
 # ex. could read repository or file to get values
 OPTIONS=(major minor patch prerelease)
 
-current_options=$(yq eval '.on.workflow_dispatch.inputs.usecase.options' $SOURCE_YAML_FILE )
+current_options=$(yq eval '.on.workflow_dispatch.inputs.version.options' $SOURCE_YAML_FILE )
 
 current_options_array=()
 while read -r word; do
@@ -32,11 +32,13 @@ else
 
     for option in "${output_array[@]}"; do
         options_string+="\\"$option\\", "
+       
     done
 
     options_string="${options_string%, }]"
+ 
 
     yq eval ".on.workflow_dispatch.inputs.version.options = $options_string" $SOURCE_YAML_FILE > temp.yml && mv temp.yml $SOURCE_YAML_FILE
+ 
 fi
-
 
