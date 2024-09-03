@@ -6,20 +6,14 @@ on:
         description: "Apply the changes"
         required: true
         type: boolean
-      environment:
-        description: "Name of the environment"
-        type: choice
-        required: true
-        options:
-          - dev
-          - qa
-          - staging
-          - prod
 jobs:
   terraform:
     name: "Terraform"
     runs-on: [self-hosted, Linux]
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        repository: 'test'
       # Checkout the repository to the GitHub Actions runner
       - name: test
         run: date
