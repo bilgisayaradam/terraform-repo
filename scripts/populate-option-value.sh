@@ -20,12 +20,12 @@ while read -r word; do
 done <<< "$current_options"
  
 declare -a tmp_output_array=()
-declare -a target_output_array1=()
+declare -a target_output_array=()
 
 for i in $OPTIONS; do
  
-    output_array+=("- $i")
-    output_array1+=("$i")
+    tmp_output_array+=("- $i")
+    target_output_array+=("$i")
 done
 
 
