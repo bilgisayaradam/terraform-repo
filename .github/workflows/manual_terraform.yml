@@ -11,6 +11,10 @@ on:
         type: choice
         required: true
         options:
+          - boo
+          - doo
+          - foo
+          - hello
           - x
       environment:
         description: "Name of the environment"
