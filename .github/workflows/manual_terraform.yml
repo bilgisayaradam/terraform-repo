@@ -11,12 +11,7 @@ on:
         type: choice
         required: true
         options:
-          - a
-          - b
-          - d
-          - e
-          - f
-          - g
+          - x
       environment:
         description: "Name of the environment"
         type: choice
