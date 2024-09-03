@@ -10,7 +10,9 @@ on:
         description: "Use case"
         type: choice
         required: true
-        options: []
+        options:
+          - one
+          - two
       environment:
         description: "Name of the environment"
         type: choice
