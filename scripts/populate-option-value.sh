@@ -10,7 +10,7 @@ OPTIONS=`ls $USECASE_DIRECTORY`
  
  
 
-current_options=$(yq eval '.on.workflow_dispatch.inputs.use_case.options' $SOURCE_YAML_FILE )
+current_options=$(yq eval '.on.workflow_dispatch.inputs.use_case.options' $MANUAL_TERRAFORM_YML )
   
 current_options_array=()
 while read -r word; do
