@@ -12,6 +12,7 @@ on:
         required: true
         options:
           - adf
+          - four
           - one
           - three
           - two
