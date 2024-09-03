@@ -12,10 +12,10 @@ on:
         required: true
         options:
           - adf
+          - five
           - four
           - one
           - three
-          - two
       environment:
         description: "Name of the environment"
         type: choice
