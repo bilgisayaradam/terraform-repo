@@ -10,14 +10,7 @@ on:
         description: "Use case"
         type: choice
         required: true
-        options:
-          - boo
-          - doo
-          - foo
-          - haus
-          - hello
-          - testit
-          - x
+        options: []
       environment:
         description: "Name of the environment"
         type: choice
