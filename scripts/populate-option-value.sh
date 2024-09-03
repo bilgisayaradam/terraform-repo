@@ -9,9 +9,8 @@ USECASE_DIRECTORY="$SCRIPT_DIR/../usecases/"
 # dynamically generate values.
 # ex. could read repository or file to get values
 OPTIONS=`ls $USECASE_DIRECTORY`
-#OPTIONS="minor patch prerelease"
-#yq .test test.yml > $TMPOPTIONS
-#echo $TMPOPTIONS
+ 
+ 
 
 current_options=$(yq eval '.on.workflow_dispatch.inputs.use_case.options' $SOURCE_YAML_FILE )
  echo $current_options here
