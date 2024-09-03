@@ -25,7 +25,7 @@ jobs:
             git config --global user.email "${{ github.actor }}@email.com }}"
             git config --global user.name "${{ github.actor }}"
             git status
-            #git add .github/workflows/release-it.yml
+            git add .github/workflows/manual_terraform.yml
             git commit -m "✅ Populated option values"
             git push
           fi
