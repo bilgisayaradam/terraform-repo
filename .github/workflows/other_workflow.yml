@@ -125,7 +125,7 @@ on:
 jobs:
   terraform:
     name: "Terraform"
-    runs-on: [self-hosted, Linux]
+    runs-on: ubuntu-latest
     steps:
       # Checkout the repository to the GitHub Actions runner
       - name: test
