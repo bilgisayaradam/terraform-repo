@@ -15,7 +15,7 @@ jobs:
 
 
       - name: Run Populator
-        run: ./scripts/populate-option-value.shy
+        run: ./scripts/populate-option-value.sh
 
       - name: Commit Changes
         run: |
