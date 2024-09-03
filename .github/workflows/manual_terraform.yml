@@ -16,6 +16,7 @@ on:
           - four
           - hellosuper
           - hellosuper123
+          - hellosuper1234
           - one
           - three
       environment:
