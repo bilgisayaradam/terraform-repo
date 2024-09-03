@@ -36,7 +36,7 @@ echo $output_array1 sdf
 # Check if the values in the arrays are equal
 echo ${current_options_array[*]} one
 echo ${output_array[*]} two
-if [[ "${current_options_array[*]}" == "${output_array[*]}" ]]; then
+if [[ "${current_options_array[*]}" == "${output_array1[*]}" ]]; then
     echo "Values in YAML file are equal to values in array. No update needed."
 else
     echo "Values in YAML file are not equal to values in array. Updating YAML file."
