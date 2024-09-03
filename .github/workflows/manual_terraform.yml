@@ -12,9 +12,10 @@ on:
         required: true
         options:
           - adf
-          - demo
           - five
           - four
+          - hellosuper
+          - hellosuper123
           - one
           - three
       environment:

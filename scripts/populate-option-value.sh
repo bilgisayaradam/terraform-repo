@@ -54,6 +54,6 @@ else
  
     echo $options_string
     #yq -o y .on.workflow_dispatch.inputs.version.options $SOURCE_YAML_FILE
-    yq eval "y = $options_string" $WORKFLOWS_DIR/$WORKFLOW  > temp.yml && mv temp.yml $WORKFLOWS_DIR/$WORKFLOW 
+    yq eval ".on.workflow_dispatch.inputs.use_case.options = $options_string" $WORKFLOWS_DIR/$WORKFLOW  > temp.yml && mv temp.yml $WORKFLOWS_DIR/$WORKFLOW 
 fi
 done
