@@ -19,8 +19,8 @@ while read -r word; do
     current_options_array+=("$word")
 done <<< "$current_options"
  
-declare -a output_array=()
-declare -a output_array1=()
+declare -a tmp_output_array=()
+declare -a target_output_array1=()
 
 for i in $OPTIONS; do
  
@@ -31,15 +31,15 @@ done
 
 # Check if the values in the arrays are equal
 echo ${current_options_array[*]} one
-echo ${output_array[*]} two
-if [[ "${current_options_array[*]}" == "${output_array[*]}" ]]; then
+echo ${tmp_output_array[*]} two
+if [[ "${current_options_array[*]}" == "${tmp_output_array[*]}" ]]; then
     echo "Values in YAML file are equal to values in array. No update needed."
 else
     echo "Values in YAML file are not equal to values in array. Updating YAML file."
     # Construct YAML-compatible string
     options_string="["
 
-    for option in "${output_array1[@]}"; do
+    for option in "${target_output_array[@]}"; do
     echo $option
         options_string+="\"$option\", "
     done
