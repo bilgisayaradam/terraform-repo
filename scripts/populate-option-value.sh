@@ -24,7 +24,7 @@ declare -a output_array1=()
 
 for i in $OPTIONS; do
  
-    output_array+=("- '$i'")
+    output_array+=("- $i")
     output_array1+=("$i")
 done
 
