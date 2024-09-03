@@ -3,11 +3,9 @@
 #!/bin/bash
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-SOURCE_YAML_FILE="$SCRIPT_DIR/../.github/workflows/manual_terraform.yml"
+MANUAL_TERRAFORM_YML="$SCRIPT_DIR/../.github/workflows/manual_terraform.yml"
 USECASE_DIRECTORY="$SCRIPT_DIR/../usecases/"
 
-# dynamically generate values.
-# ex. could read repository or file to get values
 OPTIONS=`ls $USECASE_DIRECTORY`
  
  
@@ -48,6 +46,6 @@ else
  
     echo $options_string
     #yq -o y .on.workflow_dispatch.inputs.version.options $SOURCE_YAML_FILE
-    yq eval ".on.workflow_dispatch.inputs.use_case.options = $options_string" $SOURCE_YAML_FILE > temp.yml && mv temp.yml $SOURCE_YAML_FILE
+    yq eval ".on.workflow_dispatch.inputs.use_case.options = $options_string" $MANUAL_TERRAFORM_YML > temp.yml && mv temp.yml $MANUAL_TERRAFORM_YML
 fi
 
