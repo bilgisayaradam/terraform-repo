@@ -11,10 +11,11 @@ on:
         type: choice
         required: true
         options:
+          - adf
+          - demo
+          - five
+          - four
           - one
-          - seven
-          - ten
-          - six
           - three
       environment:
         description: "Name of the environment"

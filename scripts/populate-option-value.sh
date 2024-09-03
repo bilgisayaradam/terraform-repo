@@ -4,14 +4,22 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 MANUAL_TERRAFORM_YML="$SCRIPT_DIR/../.github/workflows/manual_terraform.yml"
+WORKFLOWS_DIR="$SCRIPT_DIR/../.github/workflows"
 USECASE_DIRECTORY="$SCRIPT_DIR/../usecases/"
 
 OPTIONS=`ls $USECASE_DIRECTORY`
  
- 
+for WORKFLOW in `ls $WORKFLOWS_DIR`
+do
 
-current_options=$(yq eval '.on.workflow_dispatch.inputs.use_case.options' $MANUAL_TERRAFORM_YML )
-  
+    if [[ `yq '.on.workflow_dispatch.inputs.use_case.options' $WORKFLOWS_DIR/$WORKFLOW` != 'null' ]]; then
+        
+        current_options=$(yq eval '.on.workflow_dispatch.inputs.use_case.options' $WORKFLOWS_DIR/$WORKFLOW )
+    else
+        echo "skipping $WORKFLOW no options to update"
+        continue
+    fi
+
 current_options_array=()
 while read -r word; do
     current_options_array+=("$word")
@@ -26,10 +34,10 @@ for i in $OPTIONS; do
     target_output_array+=("$i")
 done
 
-
 # Check if the values in the arrays are equal
 echo ${current_options_array[*]} current values
 echo ${tmp_output_array[*]} new values
+echo "Processing $WORKFLOWS_DIR/$WORKFLOW"
 if [[ "${current_options_array[*]}" == "${tmp_output_array[*]}" ]]; then
     echo "Values in YAML file are equal to values in array. No update needed."
 else
@@ -46,6 +54,6 @@ else
  
     echo $options_string
     #yq -o y .on.workflow_dispatch.inputs.version.options $SOURCE_YAML_FILE
-    yq eval ".on.workflow_dispatch.inputs.use_case.options = $options_string" $MANUAL_TERRAFORM_YML > temp.yml && mv temp.yml $MANUAL_TERRAFORM_YML
+    yq eval "y = $options_string" $WORKFLOWS_DIR/$WORKFLOW  > temp.yml && mv temp.yml $WORKFLOWS_DIR/$WORKFLOW 
 fi
-
+done
