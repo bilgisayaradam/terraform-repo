@@ -26,7 +26,8 @@ jobs:
             git config --global user.name "${{ github.actor }}"
             git pull
             git status
-            git add .github/workflows/manual_terraform.yml
+            #git add .github/workflows/manual_terraform.yml
+            git add --all
             git commit -m "✅ Populated option values"
             git push
           fi

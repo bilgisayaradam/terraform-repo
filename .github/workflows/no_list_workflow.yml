@@ -1,4 +1,4 @@
-name: "Terraform: Manual Workflow"
+name: "no list"
 on:
   workflow_dispatch:
     inputs:
@@ -6,18 +6,6 @@ on:
         description: "Apply the changes"
         required: true
         type: boolean
-      use_case:
-        description: "Use case"
-        type: choice
-        required: true
-        options:
-          - adf
-          - five
-          - four
-          - hellosuper
-          - hellosuper123
-          - one
-          - three
       environment:
         description: "Name of the environment"
         type: choice

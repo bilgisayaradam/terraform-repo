@@ -1,4 +1,4 @@
-name: "Terraform: Manual Workflow"
+name: "Other Workflow"
 on:
   workflow_dispatch:
     inputs:
